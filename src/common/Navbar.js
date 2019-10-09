@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {Link} from 'react-router-dom';
 // const Ract = require('react');
 
 class Navbar extends Component {
@@ -43,24 +43,19 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <a className="nav-link" href="index.html">
+                <Link className="nav-link" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="about.html">
-                  About
-                </a>
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="post.html">
-                  Sample Post
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="contact.html">
-                  Contact
-                </a>
+                <Link className="nav-link" to="/signup">
+                  signup
+                </Link>
               </li>
             </ul>
           </div>
