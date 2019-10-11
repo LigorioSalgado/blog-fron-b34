@@ -1,11 +1,32 @@
-import React, {useState} from "react";
+import React from "react";
+import { useMutation } from 'react-apollo-hooks';
+import gql from 'graphql-tag' 
 import Layout from "../common/Layout";
 import Input from "../common/Input";
 import useForm from "../hooks/useForm";
 
-function Login() {
-    const catchData = (inputs) => {
-        console.log(inputs);
+
+const LOGIN_MUTATION = gql`
+	mutation LOGIN($email:EmailAddress!,$password:String!){
+		login(email:$email,password:$password){
+			token
+		}
+	}
+
+`
+
+function Login({history}) {
+	const [sendLogin] = useMutation(LOGIN_MUTATION)
+
+    const catchData = async(inputs) => {
+		//inputs = {email:"asdasd","password":"adasdasd"}
+		const {data,errors} = await sendLogin({variables:{...inputs}})
+		if(data){
+			const {login} = data;
+			localStorage.setItem('blogToken',login.token);
+			history.push('/')
+		}
+		if (errors) alert(`Errores al hacer Login ${errors}`)
     }
 
     const {handleInputChange,handleSubmit,inputs} = useForm(catchData)

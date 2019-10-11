@@ -12,9 +12,10 @@ function Head(props) {
     //Si pongo una variable dentro del arreglo, escucha los cambios y se vueleve a 
     //ejecutar useEffect()//componentDidUpdate
     //title = "otra cosa"; Esto no funciona
-    //setTitle('Otra cosa');Esto si funciona
+	//setTitle('Otra cosa');Esto si funciona 
+  const cover = props.cover ? props.cover : image	
   return (
-    <header className="masthead" style={{backgroundImage:`url('${image}')`}}>
+    <header className="masthead" style={{backgroundImage:`url('${cover}')`}}>
       <div className="overlay"></div>
       <div className="container">
         <div className="row">
