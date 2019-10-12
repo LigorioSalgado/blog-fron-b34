@@ -4,6 +4,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import Signup from './views/Signup';
 import Post from './views/Post';
+import Create from './views/Create';
 
 function Logout () {
 	localStorage.removeItem('blogToken');
@@ -19,6 +20,8 @@ function Routes() {
             <Route exact path="/signup" component={Signup} />
 			<Route exact path="/logout" component={Logout} />
 			<Route exact path="/post/:id" component={Post} />
+            <Route exact path="/new" component={Create} />
+
         </>
     );
 }
