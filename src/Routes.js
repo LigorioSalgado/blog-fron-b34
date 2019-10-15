@@ -5,7 +5,10 @@ import Login from './views/Login';
 import Signup from './views/Signup';
 import Post from './views/Post';
 import Create from './views/Create';
+import Me from './views/Me';
+import Update from './views/Update';
 import authHOC from './utils/authHOC';
+
 
 function Logout () {
     localStorage.removeItem('blogToken');
@@ -23,6 +26,8 @@ function Routes() {
 			<Route exact path="/logout" component={authHOC(Logout)} />
 			<Route exact path="/post/:id" component={Post} />
             <Route exact path="/new" component={Create} />
+            <Route exact path="/me" component={Me} />
+            <Route exact path="/update/:id" component={Update} />
 
         </>
     );

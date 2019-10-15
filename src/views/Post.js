@@ -24,6 +24,7 @@ function Post({match}){
 	const { id } = match.params
 	const { loading, data, errors } = useQuery(SINGLE_POST,{variables:{id}})
 
+	console.log(loading)
 	if(loading) return <h2>Cargando...</h2>
 	if(errors) return <h2>{`Errores: ${errors}`}</h2>
 

@@ -1,8 +1,21 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import { useMutation } from 'react-apollo-hooks';
+import gql from 'graphql-tag';
 
-function PostCard({ title, author, id }) {
+
+const DELETE_POST = gql`
+
+    mutation deletePost($id:ID!){
+        deleteOnePost(id:$id)
+    }
+`
+
+function PostCard({ title, author, id, edit, remove }) {
   //Como parametro recibo props
+  
+  const [deletePost] =  useMutation(DELETE_POST)
+  
   return (
     <>
       <div class="post-preview">
@@ -15,6 +28,25 @@ function PostCard({ title, author, id }) {
           Posted by
           <a href="#"> {author} </a>
         </p>
+        <p>
+        {
+          edit ? <Link to={`/update/${id}`} > Editar </Link> : <></>
+        }
+        {
+          remove ? <button className="btn btn-danger ml-3" onClick={
+            () => {
+              // eslint-disable-next-line no-restricted-globals
+              const affirm = confirm("Desea Borrara este Post")
+              if(affirm){
+                deletePost({variables:{id}}).then(() => {
+                  window.location.reload();
+                });
+              }
+            }
+          }> Borrar Post </button> : <></>
+        }
+        </p>
+        
       </div>
       <hr />
     </>

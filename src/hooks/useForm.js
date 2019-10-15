@@ -1,7 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function useForm(callback){
-    const [inputs,setInputs] = useState({});
+function useForm(callback, current = {}){
+    const [inputs,setInputs] = useState(current);
+
+    useEffect(() => {
+        console.log(current)
+        if(current.getOnePost){
+            delete current.getOnePost.__typename
+            setInputs({...current.getOnePost})
+        }
+       
+    },[current])
 
     const handleSubmit = (event) => {
         if (event) event.preventDefault();
