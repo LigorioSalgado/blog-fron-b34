@@ -5,7 +5,7 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 
-const API_URL = 'https://b34cnremoto.herokuapp.com';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/';
 
 const httpLink =  createUploadLink({
 	uri:API_URL
