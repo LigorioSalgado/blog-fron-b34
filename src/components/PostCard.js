@@ -18,13 +18,13 @@ function PostCard({ title, author, id, edit, remove }) {
   
   return (
     <>
-      <div class="post-preview">
+      <div className="post-preview">
         <Link to={`/post/${id}`}>
-          <h2 class="post-title">
+          <h2 className="post-title">
            {title}
           </h2>
         </Link>
-        <p class="post-meta">
+        <p className="post-meta">
           Posted by
           <a href="#"> {author} </a>
         </p>

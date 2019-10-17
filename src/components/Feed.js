@@ -24,7 +24,7 @@ function Feed() {
   return (
     <div className="container">
       <div className="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div className="col-lg-8 col-md-10 mx-auto">
 			{
 			loading ? <h2>Cargando...</h2> 
 			: data.getPosts.map( post => (
@@ -36,8 +36,8 @@ function Feed() {
 					/>
 				))
 			}
-          <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">
+          <div className="clearfix">
+            <a className="btn btn-primary float-right" href="#">
               Older Posts &rarr;
             </a>
           </div>
